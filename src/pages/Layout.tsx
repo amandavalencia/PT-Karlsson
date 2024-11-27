@@ -1,6 +1,8 @@
-export const AbLayoutout =()=>{
+import { Outlet } from "react-router-dom"
 
-    return(
+export const Layout =()=>{
+
+    return <>
         <nav>
             <li>Home</li>
             <li>Training Programs</li>
@@ -8,7 +10,8 @@ export const AbLayoutout =()=>{
             <li>Who is Karlsson</li>
         </nav>
         <main>
-            
+            <Outlet/>
         </main>
-    )
+   </>
+    
 }
