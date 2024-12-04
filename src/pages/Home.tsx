@@ -1,6 +1,9 @@
-export const Home =()=>{
-
-    return(
-        <h1>Home Page</h1>
-    )
-}
+export const Home = () => {
+  return (
+    <>
+      <div className="">
+        <h1>PT Karlsson</h1>
+      </div>
+    </>
+  );
+};
