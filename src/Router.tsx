@@ -1,11 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import { TrainingProgram } from "./pages/TrainingProgram";
 import { Layout } from "./pages/Layout";
 import { Home } from "./pages/Home";
-import { About } from "./pages/About";
 import { MyPage } from "./pages/MyPage";
 import { LogIn } from "./pages/LogIn";
-import { TrainingPrograms } from "./pages/TrainingPrograms";
+import { SignUp } from "./pages/SignUp";
+import { ProdectedRoute } from "./components/routeProtectors/ProtectedRoute";
+import { AdminPage } from "./pages/AdminPage";
+import { NotFound } from "./pages/NotFound";
+import { AdminRoute } from "./components/routeProtectors/AdminRoute";
+import { About } from "./components/About";
 
 export const router = createBrowserRouter([
   {
@@ -16,22 +21,36 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      {
-        path: "/About",
-        element: <About />,
-      },
+      { path: "/", element: <About></About> },
       {
         path: "/MyPage",
-        element: <MyPage />,
+        element: (
+          <ProdectedRoute>
+            <MyPage />
+          </ProdectedRoute>
+        ),
       },
       {
-        path: "/TrainingPrograms",
-        element: <TrainingPrograms />,
+        path: "/TrainingProgram/:level",
+        element: <TrainingProgram />,
       },
       {
         path: "/LogIn",
         element: <LogIn />,
       },
+      {
+        path: "/SignUp",
+        element: <SignUp />,
+      },
+      {
+        path: "/AdminPage",
+        element: (
+          <AdminRoute>
+            <AdminPage />
+          </AdminRoute>
+        ),
+      },
     ],
+    errorElement: <NotFound />,
   },
 ]);
