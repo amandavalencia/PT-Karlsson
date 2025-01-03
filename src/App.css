@@ -14,6 +14,9 @@
 body{
   background-color: #161616;
 }
+.homeViewHight{
+  height: 85vh;
+}
 
 .box-shadow{
   box-shadow: 0 0px 10px 5px #4140404d;
@@ -21,4 +24,25 @@ body{
 }
 .navLink{
   @apply text-brand hover:text-grey focus:text-primaryButton
+}
+
+/* Scrollbar-styling */
+.my-scrollbar {
+  scrollbar-width: thin; /* För Firefox */
+  scrollbar-color: #3b3b3b #e5e7eb; /* För Firefox */
+}
+
+/* För WebKit-baserade webbläsare (t.ex. Chrome, Edge, Safari) */
+.my-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Bredden på scrollbar */
+  height: 8px; /* Höjden för horisontell scrollbar */
+}
+
+.my-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #6b7280; /* Färg på "tummen" */
+  border-radius: 4px; /* Rundade hörn */
+}
+
+.my-scrollbar::-webkit-scrollbar-track {
+  background-color: #e5e7eb; /* Färg på spåret */
 }
