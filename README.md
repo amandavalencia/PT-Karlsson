@@ -1,30 +1,36 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+Project idea summary
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## I have developed a website for a personal trainer specializing in martial arts. The website enables the owner to upload training videosl. Customers can access content tailored to their skill level—beginner, intermediate, or advanced—with each level offering various techniques. This platform provides a flexible training experience for martial arts enthusiasts at all levels.
 
-## Expanding the ESLint configuration
+Purpose
+The idea for the website stems from the fact that there aren't many personal trainers offering training programs focused specifically on martial arts that provide a clear plan for how the training should progress. The goal is to deliver a training plan that feels like working with a personal trainer, but without the high cost associated with personal training.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+Features and Functionality
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+Login System: Allows users to create accounts and log in to access personalized content.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Content Levels: Users can choose between beginner, intermediate, and advanced levels, with training videos and techniques tailored to their skill level.
+
+Admin Panel: An administrative page where the trainer can upload and manage videos and content.
+
+## Responsive Design: The website works seamlessly on both desktop and mobile devices, enabling users to train anytime, anywhere.
+
+Technologies and Frameworks
+Frontend:
+HTML5 and CSS to build the structure and styling of the website.
+React and Typescript for handling interactivity and dynamic elements.
+Tailwind for responsive design.
+
+Backend:
+API structure to handle data flow between the frontend and backend.
+
+Database:
+Supabase to store user information, training videos.
+
+---
