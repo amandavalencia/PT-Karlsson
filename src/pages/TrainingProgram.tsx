@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
+import { ShowPrograms } from "../components/trainingProgram/ShowPrograms";
 
 export const TrainingProgram = () => {
-  const { level } = useParams();
   return (
     <>
-      <h1> programet du klickat på: {level}</h1>
+      <ShowPrograms></ShowPrograms>
     </>
   );
 };
