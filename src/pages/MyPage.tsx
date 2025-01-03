@@ -1,3 +1,9 @@
+import { ShowMyVideos } from "../components/myPage/ShowMyVidoes";
+
 export const MyPage = () => {
-  return <h1>My training Programs</h1>;
+  return (
+    <>
+      <ShowMyVideos></ShowMyVideos>
+    </>
+  );
 };
