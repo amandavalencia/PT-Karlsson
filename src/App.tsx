@@ -10,37 +10,44 @@ import { IExtendedUser } from "./interface/IExtendedUser";
 function App() {
   const [user, setUser] = useState<IExtendedUser | null>(null);
   const [session, setSession] = useState<Session | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const setData = async () => {
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.getSession();
-      if (error) throw error;
+      try {
+        setLoading(true);
 
-      if (session) {
-        setSession(session);
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession();
+        if (error) throw error;
 
-        const { data: profile, error: profileError } = await supabase
-          .from("users")
-          .select("is_admin")
-          .eq("id", session?.user.id)
-          .single();
+        if (session) {
+          setSession(session);
 
-        if (profileError) {
-          console.error("Error fetching profile:", profileError.message);
+          const { data: profile, error: profileError } = await supabase
+            .from("users")
+            .select("is_admin")
+            .eq("id", session?.user.id)
+            .single();
+
+          if (profileError) {
+            console.error("Error fetching profile:", profileError.message);
+            setUser(null);
+            return;
+          }
+
+          const extendedUser: IExtendedUser = {
+            ...session?.user,
+            is_admin: profile.is_admin,
+          };
+          setUser(extendedUser);
+        } else {
           setUser(null);
-          return;
         }
-
-        const extendedUser: IExtendedUser = {
-          ...session?.user,
-          is_admin: profile.is_admin,
-        };
-        setUser(extendedUser);
-      } else {
-        setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -146,9 +153,8 @@ function App() {
       ]);
       if (dbError) throw dbError;
 
-      // Uppdatera användartillstånd
       setUser(signUpData.user);
-      return signUpData.user; // Returnera användaren
+      return signUpData.user;
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error("Error during sign-up:", error.message);
@@ -159,7 +165,9 @@ function App() {
 
   return (
     <>
-      <AuthContext.Provider value={{ user, session, signUp, signOut, signIn }}>
+      <AuthContext.Provider
+        value={{ user, session, loading, signUp, signOut, signIn }}
+      >
         <RouterProvider router={router}></RouterProvider>
       </AuthContext.Provider>
     </>

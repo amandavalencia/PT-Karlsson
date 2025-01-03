@@ -5,6 +5,7 @@ import { IExtendedUser } from "../interface/IExtendedUser";
 interface IAuthContext {
   user: IExtendedUser | null;
   session: Session | null;
+  loading: boolean;
   signUp: (
     email: string,
     password: string,
@@ -17,6 +18,7 @@ interface IAuthContext {
 export const AuthContext = createContext<IAuthContext>({
   user: null,
   session: null,
+  loading: true,
   signUp: async () => null,
   signOut: async () => {},
   signIn: async () => null,
